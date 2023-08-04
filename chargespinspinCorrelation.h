@@ -38,7 +38,7 @@ void chargespinspinCorrelator(MPS psi, const SiteSet sites, int c){
 			  Cmp *= dag(prime(psi(k),"Link"));}
 		  Cz *= psi(c)*sites.op("Nh",c);
 		  Cpm *= psi(c)*sites.op("Nh",c);
-		  Cmp *= psi(c)*sites.op("S+",c);
+		  Cmp *= psi(c)*sites.op("Nh",c);
 		  auto il = commonIndex(psi(c),psi(c-1),"Link");
 		  Cz *= dag(prime(prime(psi(c),"Site"),il));
 		  Cpm *= dag(prime(prime(psi(c),"Site"),il));
@@ -124,9 +124,9 @@ void chargespinspinCorrelator(MPS psi, const SiteSet sites, int c){
 	     } // closes if i<c
 	          else if (i>c)
 		  { psi.position(c);           
-			 auto Cz = psi(c)*sites.op("Nh",i);
-			 auto Cpm = psi(c)*sites.op("Nh",i);
-			 auto Cmp = psi(c)*sites.op("Nh",i);
+			 auto Cz = psi(c)*sites.op("Nh",c);
+			 auto Cpm = psi(c)*sites.op("Nh",c);
+			 auto Cmp = psi(c)*sites.op("Nh",c);
 			  auto ir = commonIndex(psi(c),psi(c+1),"Link");
 			  Cz *= dag(prime(prime(psi(c),"Site"),ir));
 			  Cpm *= dag(prime(prime(psi(c),"Site"),ir));
